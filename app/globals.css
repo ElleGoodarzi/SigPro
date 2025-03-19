@@ -1,0 +1,409 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Fira Code for a more nerdy, code-like feel */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+@layer base {
+  :root {
+    --hue-primary: 210; /* More blue-teal hue for sci-fi feel */
+    --hue-secondary: 270; /* Purple for mathematical/scientific vibe */
+    --hue-accent: 160; /* Matrix-like green */
+  }
+  
+  body {
+    @apply bg-base-100 text-base-content transition-colors duration-200;
+    font-family: 'Fira Code', monospace;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Mono', monospace;
+  }
+  
+  code, pre, .code-block {
+    font-family: 'Fira Code', monospace;
+  }
+  
+  /* Mathematical symbols and equations */
+  .math-eq {
+    @apply font-mono tracking-tight;
+  }
+}
+
+@layer components {
+  .card-shadow {
+    @apply shadow-lg hover:shadow-xl transition-shadow duration-300;
+  }
+  
+  .custom-btn-primary {
+    @apply btn btn-primary;
+    font-family: 'Space Mono', monospace;
+  }
+  
+  .custom-btn-secondary {
+    @apply btn btn-secondary;
+    font-family: 'Space Mono', monospace;
+  }
+  
+  .nav-link {
+    @apply flex items-center p-2 text-base font-medium rounded-lg hover:bg-opacity-20 hover:bg-primary-700 transition-colors duration-150;
+  }
+  
+  .nav-link.active {
+    @apply bg-primary-700 text-white bg-opacity-20;
+  }
+  
+  .code-editor-container {
+    @apply border border-base-300 rounded-lg overflow-hidden h-[500px] shadow-inner;
+  }
+  
+  .lab-card {
+    @apply card card-shadow bg-base-200 hover:bg-base-300 cursor-pointer transition-colors duration-150;
+  }
+  
+  .visualizer-container {
+    @apply border border-base-300 rounded-lg p-4 bg-base-200;
+  }
+  
+  /* Grid paper background for math-related sections */
+  .grid-paper {
+    background-image: 
+      linear-gradient(rgba(var(--b2-rgb), 0.9) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(var(--b2-rgb), 0.9) 1px, transparent 1px);
+    background-size: 20px 20px;
+    @apply bg-base-100;
+  }
+  
+  /* Terminal-style container */
+  .terminal {
+    @apply bg-neutral text-neutral-content p-4 rounded-lg font-mono;
+    border: 1px solid theme('colors.primary.500');
+    box-shadow: 0 0 10px rgba(var(--p-rgb), 0.5);
+  }
+  
+  /* Nerd aesthetic button */
+  .btn-nerd {
+    @apply bg-base-300 border-2 border-primary-500 text-base-content hover:bg-opacity-80 hover:border-primary-600;
+    font-family: 'Space Mono', monospace;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-nerd::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--p-rgb), 0.2),
+      transparent
+    );
+    transition: left 0.5s;
+  }
+  
+  .btn-nerd:hover::before {
+    left: 100%;
+  }
+
+  /* Terminal-like console with scanning effect */
+  .terminal-like {
+    position: relative;
+    background-color: #151a24;
+    color: #b8c2cc;
+    text-shadow: 0 0 2px rgba(var(--p-rgb), 0.3);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5), 0 0 10px rgba(var(--p-rgb), 0.5);
+    border: 1px solid theme('colors.primary.500');
+    font-family: 'Space Mono', 'Fira Code', monospace;
+  }
+
+  .terminal-like::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--p-rgb), 0.4),
+      transparent
+    );
+    opacity: 0.7;
+    animation: scanner 4s linear infinite;
+    pointer-events: none;
+  }
+
+  /* CRT scan lines effect */
+  .crt-overlay {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .crt-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  /* Digital glitch effect */
+  @keyframes glitch {
+    0% {
+      text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                  -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+                  -0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    14% {
+      text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                  -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+                  -0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    15% {
+      text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+                  0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+                  -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    49% {
+      text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+                  0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+                  -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    50% {
+      text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+                  0.05em 0 0 rgba(0, 255, 0, 0.75),
+                  0 -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    99% {
+      text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+                  0.05em 0 0 rgba(0, 255, 0, 0.75),
+                  0 -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    100% {
+      text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75),
+                  -0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
+                  -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+  }
+
+  .text-glitch {
+    animation: glitch 1.5s infinite alternate-reverse;
+  }
+
+  .text-glitch:hover {
+    animation-duration: 0.5s;
+  }
+
+  /* Futuristic card style */
+  .card-sci-fi {
+    @apply bg-base-200 border-l-4 border-primary-500 shadow-lg;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-sci-fi::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: theme('colors.primary.500');
+    box-shadow: 0 0 15px theme('colors.primary.500');
+  }
+
+  .card-sci-fi::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    background: linear-gradient(45deg, transparent 50%, theme('colors.primary.500') 50%);
+  }
+
+  /* Matrix-style falling code animation */
+  @keyframes matrixRain {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 0% 100%;
+    }
+  }
+
+  .matrix-bg {
+    background-image: url("data:image/svg+xml,%3Csvg width='50' height='1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2300ff00' fill-opacity='0.03'%3E%3Ctext x='10' y='20' font-family='monospace'%3E1%3C/text%3E%3Ctext x='20' y='40' font-family='monospace'%3E0%3C/text%3E%3Ctext x='30' y='60' font-family='monospace'%3E1%3C/text%3E%3Ctext x='10' y='80' font-family='monospace'%3E0%3C/text%3E%3Ctext x='20' y='100' font-family='monospace'%3E1%3C/text%3E%3Ctext x='30' y='120' font-family='monospace'%3E0%3C/text%3E%3Ctext x='10' y='140' font-family='monospace'%3E1%3C/text%3E%3Ctext x='20' y='160' font-family='monospace'%3E0%3C/text%3E%3Ctext x='30' y='180' font-family='monospace'%3E1%3C/text%3E%3C/g%3E%3C/svg%3E");
+    animation: matrixRain 30s linear infinite;
+  }
+
+  /* Neon glow effects */
+  .neon-text {
+    color: theme('colors.primary.400');
+    text-shadow: 0 0 2px theme('colors.primary.400'),
+                 0 0 4px rgba(var(--p-rgb), 0.4);
+    -webkit-text-stroke: 0.5px theme('colors.primary.700');
+    letter-spacing: 0.5px;
+  }
+
+  .neon-border {
+    border: 1px solid theme('colors.primary.500');
+    box-shadow: 0 0 5px theme('colors.primary.500'),
+                inset 0 0 5px theme('colors.primary.500');
+  }
+
+  /* Blueprint grid background */
+  .grid-blueprint {
+    background-color: #8992a6;
+    background-image: 
+      linear-gradient(rgba(165, 170, 199, 0.949) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(164, 170, 203, 0.3) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: center center;
+  }
+
+  /* Hologram effect */
+  .hologram {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, 
+      rgba(16, 185, 129, 0.4), 
+      rgba(16, 185, 129, 0.8), 
+      rgba(16, 185, 129, 0.4)
+    );
+    animation: hologram-pulse 3s ease-in-out infinite;
+  }
+
+  .hologram::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(var(--p-rgb), 0.05) 30%, 
+                transparent 50%,
+                rgba(var(--p-rgb), 0.05) 70%,
+                transparent 100%);
+    animation: hologram 5s ease infinite;
+    pointer-events: none;
+  }
+
+  @keyframes hologram {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+  }
+
+  @keyframes hologram-pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+  }
+
+  /* Retro computer terminal text */
+  .retro-text {
+    font-family: 'VT323', 'Press Start 2P', monospace;
+    letter-spacing: 0.5px;
+  }
+
+  /* Space Mono font matching the buttons */
+  .space-mono {
+    font-family: 'Space Mono', monospace;
+  }
+
+  .console-text {
+    line-height: 1.5;
+    font-family: 'Fira Code', 'Space Mono', monospace;
+  }
+
+  /* Card styles like a sci-fi display panel */
+  .panel-sci-fi {
+    background-color: rgba(219, 224, 232, 0.918);
+    border-radius: 4px;
+    box-shadow: 
+      0 0 0 1px rgba(219, 217, 227, 0.951),
+      0 4px 8px rgba(215, 208, 239, 0.847),
+      inset 0 0 20px rgba(182, 183, 202, 0.773);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .panel-sci-fi::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, 
+                transparent 10%, 
+                rgba(var(--p-rgb), 0.03) 40%, 
+                transparent 60%);
+    pointer-events: none;
+  }
+
+  /* Title specific styling with dark blue and red border */
+  .title-sci-fi {
+    color: #050545; /* Dark blue */
+    text-shadow: 0 0 3px rgba(189, 165, 220, 0.5);
+    -webkit-text-stroke: 0.5px #aac4cf; /* Thinner red border */
+    letter-spacing: 1px;
+  }
+
+  /* CRT Overlay for panels */
+  .crt-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+      linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.03));
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Fade in animation */
+  .animate-fade-in {
+    animation: fade-in 1s ease-out;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Enhanced neon border */
+  .neon-border {
+    box-shadow: 0 0 5px rgba(16, 185, 129, 0.5), 0 0 10px rgba(16, 185, 129, 0.2);
+  }
+}
+
+@keyframes scanner {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+  }
+} 

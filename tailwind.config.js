@@ -1,0 +1,106 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: '#e0f7fa',
+          100: '#b3e5fc',
+          200: '#81d4fa',
+          300: '#4fc3f7',
+          400: '#29b6f6',
+          500: '#03a9f4',
+          600: '#039be5',
+          700: '#0288d1',
+          800: '#0277bd',
+          900: '#01579b',
+          950: '#003c69',
+        },
+        secondary: {
+          50: '#f3e5f5',
+          100: '#e1bee7',
+          200: '#ce93d8',
+          300: '#ba68c8',
+          400: '#ab47bc',
+          500: '#9c27b0',
+          600: '#8e24aa',
+          700: '#7b1fa2',
+          800: '#6a1b9a',
+          900: '#4a148c',
+          950: '#380e6a',
+        },
+        accent: {
+          50: '#e8f5e9',
+          100: '#c8e6c9',
+          200: '#a5d6a7',
+          300: '#81c784',
+          400: '#66bb6a',
+          500: '#4caf50',
+          600: '#43a047',
+          700: '#388e3c',
+          800: '#2e7d32',
+          900: '#1b5e20',
+          950: '#0d3f0d',
+        },
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        mono: ['Fira Code', 'monospace'],
+        heading: ['Space Mono', 'monospace'],
+      },
+      animation: {
+        'text-flicker': 'text-flicker 1.5s linear infinite',
+        'nerd-pulse': 'nerd-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      keyframes: {
+        'text-flicker': {
+          '0%, 19%, 21%, 23%, 25%, 54%, 56%, 100%': { opacity: '1' },
+          '20%, 22%, 24%, 55%': { opacity: '0.5' },
+        },
+        'nerd-pulse': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.5' },
+        },
+      },
+    },
+  },
+  plugins: [require('daisyui')],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...require('daisyui/src/theming/themes')['light'],
+          primary: '#0288d1',
+          secondary: '#7b1fa2',
+          accent: '#388e3c',
+          neutral: '#374151',
+          'base-100': '#f5f7fa',
+          'base-200': '#e9ecf1',
+          'base-300': '#d8dde3',
+          '--rounded-box': '0.375rem',
+          '--animation-btn': '0.2s',
+          '--border-btn': '2px',
+        },
+        dark: {
+          ...require('daisyui/src/theming/themes')['dark'],
+          primary: '#29b6f6',
+          secondary: '#ba68c8',
+          accent: '#66bb6a',
+          neutral: '#1f2937',
+          'base-100': '#0a1929',
+          'base-200': '#061120',
+          'base-300': '#03090f',
+          '--rounded-box': '0.375rem',
+          '--animation-btn': '0.2s',
+          '--border-btn': '2px',
+        },
+      },
+    ],
+    darkTheme: 'dark',
+  },
+} 
