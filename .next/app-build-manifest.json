@@ -16,15 +16,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/simulator/page.js"
     ],
-    "/tutorials/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/tutorials/page.js"
-    ],
     "/labs/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/labs/page.js"
+    ],
+    "/labs/matlab-functions-sampling/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/labs/matlab-functions-sampling/page.js"
     ]
   }
 }
