@@ -9,6 +9,14 @@ export default function TutorialsPage() {
 
   const tutorials = [
     {
+      id: 'z-transform',
+      title: 'Z-Transform: From Theory to Practice',
+      description: 'Master the mathematical bridge between discrete sequences and complex functions.',
+      difficulty: 'Advanced',
+      duration: '40 minutes',
+      tags: ['Z-Transform', 'Discrete Systems', 'Digital Signal Processing'],
+    },
+    {
       id: 'system-properties',
       title: 'System Properties in Signals & Systems',
       description: 'Learn about key system properties: linearity, BIBO stability, and invertibility.',
