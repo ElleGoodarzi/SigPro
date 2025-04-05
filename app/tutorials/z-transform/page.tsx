@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { MathJax, MathJaxContext } from "better-react-mathjax";
-import Plot from "react-plotly.js";
+import Image from "next/image";
 
 export default function ZTransformTutorial() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -163,15 +163,15 @@ export default function ZTransformTutorial() {
                         <tbody>
                           <tr>
                             <td className="py-1">Right-sided</td>
-                            <td>|z| > r (outside a circle)</td>
+                            <td>|z| &gt; r (outside a circle)</td>
                           </tr>
                           <tr>
                             <td className="py-1">Left-sided</td>
-                            <td>|z| < r (inside a circle)</td>
+                            <td>|z| &lt; r (inside a circle)</td>
                           </tr>
                           <tr>
                             <td className="py-1">Two-sided</td>
-                            <td>r₁ < |z| < r₂ (between circles)</td>
+                            <td>r₁ &lt; |z| &lt; r₂ (between circles)</td>
                           </tr>
                           <tr>
                             <td className="py-1">Finite duration</td>
@@ -311,32 +311,32 @@ export default function ZTransformTutorial() {
                         <tr className="border-t border-gray-700">
                           <td className="py-2">u[n] (unit step)</td>
                           <td>z/(z-1)</td>
-                          <td>|z| > 1</td>
+                          <td>|z| &gt; 1</td>
                         </tr>
                         <tr className="border-t border-gray-700">
                           <td className="py-2">aⁿu[n]</td>
                           <td>z/(z-a)</td>
-                          <td>|z| > |a|</td>
+                          <td>|z| &gt; |a|</td>
                         </tr>
                         <tr className="border-t border-gray-700">
                           <td className="py-2">naⁿu[n]</td>
                           <td>az/(z-a)²</td>
-                          <td>|z| > |a|</td>
+                          <td>|z| &gt; |a|</td>
                         </tr>
                         <tr className="border-t border-gray-700">
                           <td className="py-2">-aⁿu[-n-1]</td>
                           <td>z/(z-a)</td>
-                          <td>|z| < |a|</td>
+                          <td>|z| &lt; |a|</td>
                         </tr>
                         <tr className="border-t border-gray-700">
                           <td className="py-2">cos(ω₀n)u[n]</td>
                           <td>z(z-cos(ω₀))/((z-cos(ω₀))²+sin²(ω₀))</td>
-                          <td>|z| > 1</td>
+                          <td>|z| &gt; 1</td>
                         </tr>
                         <tr className="border-t border-gray-700">
                           <td className="py-2">sin(ω₀n)u[n]</td>
                           <td>z·sin(ω₀)/((z-cos(ω₀))²+sin²(ω₀))</td>
-                          <td>|z| > 1</td>
+                          <td>|z| &gt; 1</td>
                         </tr>
                       </tbody>
                     </table>
@@ -376,58 +376,14 @@ export default function ZTransformTutorial() {
                       
                       <div className="bg-gray-800 p-4 rounded-lg">
                         <h4 className="text-lg text-purple-400 mb-2">System Response:</h4>
-                        <div className="h-64 w-full">
-                          <Plot
-                            data={[
-                              {
-                                x: Array.from({ length: 21 }, (_, i) => i),
-                                y: Array.from({ length: 21 }, (_, i) => 5 - 5 * Math.pow(0.8, i)),
-                                type: 'scatter',
-                                mode: 'lines+markers',
-                                marker: { color: '#00ffff' },
-                                name: 'Step Response'
-                              },
-                              {
-                                x: Array.from({ length: 21 }, (_, i) => i),
-                                y: Array.from({ length: 21 }, (_, i) => Math.pow(0.8, i)),
-                                type: 'scatter',
-                                mode: 'lines+markers',
-                                marker: { color: '#ff00ff' },
-                                name: 'Impulse Response'
-                              }
-                            ]}
-                            layout={{
-                              title: 'First-Order System Response',
-                              xaxis: {
-                                title: 'Sample (n)',
-                                gridcolor: 'rgba(255,255,255,0.1)',
-                                color: '#ffffff'
-                              },
-                              yaxis: {
-                                title: 'Amplitude',
-                                gridcolor: 'rgba(255,255,255,0.1)',
-                                color: '#ffffff'
-                              },
-                              plot_bgcolor: 'rgba(0,0,0,0)',
-                              paper_bgcolor: 'rgba(0,0,0,0)',
-                              font: {
-                                color: '#ffffff'
-                              },
-                              legend: {
-                                x: 0,
-                                y: 1,
-                                font: {
-                                  color: '#ffffff'
-                                }
-                              },
-                              margin: { t: 30, b: 40, l: 50, r: 10 }
-                            }}
-                            config={{
-                              displayModeBar: false,
-                              responsive: true
-                            }}
-                            style={{ width: '100%', height: '100%' }}
-                          />
+                        <div className="h-64 w-full bg-gray-900 rounded flex items-center justify-center">
+                          <div className="text-center">
+                            <div className="text-cyan-400 mb-2">First-Order System Response</div>
+                            <div className="text-xs text-gray-500">
+                              The step response approaches a steady-state value of 5<br/>
+                              The impulse response decays exponentially
+                            </div>
+                          </div>
                         </div>
                         <p className="text-sm text-gray-400 mt-2">
                           The step response approaches a steady-state value of 5 as n increases, while the impulse response decays exponentially.
@@ -520,9 +476,8 @@ stem(n, h)
 grid on
 title('Impulse Response h[n]')
 xlabel('Sample (n)')
-ylabel('Amplitude')`
-```
-</code>
+ylabel('Amplitude')`}
+                      </code>
                     </pre>
                   </div>
                   
@@ -554,9 +509,8 @@ ylabel('Amplitude')`
                             </button>
                           </div>
                         </div>
-                        <textarea 
-                          className="w-full h-64 bg-gray-900 text-gray-300 p-4 font-mono text-sm focus:outline-none focus:ring-1 focus:ring-cyan-500" 
-                          defaultValue={`% Define a simple first-order IIR filter
+                        <div className="bg-gray-900 p-4 text-gray-300 font-mono text-sm h-64 overflow-auto">
+{`% Define a simple first-order IIR filter
 b = [1];       % Numerator coefficients
 a = [1, -0.8]; % Denominator coefficients
 
@@ -588,8 +542,8 @@ stem(n, h);
 grid on;
 title('Impulse Response h[n]');
 xlabel('Sample (n)');
-ylabel('Amplitude');`}>
-                        </textarea>
+ylabel('Amplitude');`}
+                        </div>
                       </div>
                       
                       <div className="bg-gray-800 rounded-lg overflow-hidden">
@@ -617,6 +571,26 @@ ylabel('Amplitude');`}>
                   </div>
                 </div>
               )}
+
+              {/* Navigation Controls */}
+              <div className="flex justify-between mt-8">
+                <button 
+                  onClick={handlePreviousStep} 
+                  className={`px-4 py-2 rounded bg-gray-700 text-white hover:bg-gray-600 
+                    ${currentStep === 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  disabled={currentStep === 1}
+                >
+                  Previous
+                </button>
+                <button 
+                  onClick={handleNextStep} 
+                  className={`px-4 py-2 rounded bg-cyan-600 text-white hover:bg-cyan-500
+                    ${currentStep === totalSteps ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  disabled={currentStep === totalSteps}
+                >
+                  Next
+                </button>
+              </div>
             </MathJaxContext>
           </div>
         </div>

@@ -1,0 +1,331 @@
+/* 
+ * Z-Transform Explorer - Educational Styling
+ * Focused on clarity, accessibility, and learning
+ */
+
+/* Container for the entire tool */
+.z-transform-container {
+  background-color: #f8fafc;
+  color: #1e293b;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* High contrast mode for accessibility */
+.high-contrast {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+/* Main header */
+.z-transform-header {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.high-contrast .z-transform-header {
+  background-color: #1e293b;
+  border-bottom: 1px solid #334155;
+}
+
+/* Basic panel styles */
+.z-transform-panel {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.high-contrast .z-transform-panel {
+  background-color: #1e293b;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Toggle switch for accessibility options */
+.toggle-checkbox {
+  appearance: none;
+  width: 40px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #cbd5e1;
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.toggle-checkbox:checked {
+  background-color: #3b82f6;
+}
+
+.toggle-checkbox:checked::after {
+  left: calc(100% - 18px);
+}
+
+.toggle-checkbox::after {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: white;
+  transition: all 0.3s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.high-contrast .toggle-checkbox {
+  background-color: #475569;
+}
+
+.high-contrast .toggle-checkbox:checked {
+  background-color: #60a5fa;
+}
+
+/* Preset selection button */
+.preset-button {
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  transition: all 0.2s;
+}
+
+.preset-button:hover {
+  background-color: #e2e8f0;
+}
+
+.preset-button.active {
+  background-color: #dbeafe;
+  border-color: #93c5fd;
+}
+
+.high-contrast .preset-button {
+  background-color: #334155;
+  border-color: #475569;
+}
+
+.high-contrast .preset-button:hover {
+  background-color: #475569;
+}
+
+.high-contrast .preset-button.active {
+  background-color: #1e40af;
+  border-color: #3b82f6;
+}
+
+/* Z-plane visualization container */
+.z-plane-container {
+  height: 500px;
+  position: relative;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  background-color: #fff;
+}
+
+.high-contrast .z-plane-container {
+  border-color: #475569;
+  background-color: #1e293b;
+}
+
+/* Educational info card */
+.edu-info-card {
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+}
+
+.high-contrast .edu-info-card {
+  background-color: #334155;
+  border-color: #475569;
+}
+
+/* System properties info */
+.system-property {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.system-property:last-child {
+  border-bottom: none;
+}
+
+.high-contrast .system-property {
+  border-color: #475569;
+}
+
+/* Status indicators */
+.status-stable {
+  color: #16a34a;
+}
+
+.status-unstable {
+  color: #dc2626;
+}
+
+.high-contrast .status-stable {
+  color: #4ade80;
+}
+
+.high-contrast .status-unstable {
+  color: #f87171;
+}
+
+/* Educational tooltip */
+.enhanced-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.375rem;
+  border-radius: 0.25rem;
+  width: 100%;
+}
+
+.enhanced-tooltip .tooltip-content {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  background-color: #334155;
+  color: #f8fafc;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  width: 220px;
+  top: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+}
+
+.enhanced-tooltip:hover .tooltip-content {
+  display: block;
+}
+
+.enhanced-tooltip:hover {
+  background-color: rgba(226, 232, 240, 0.5);
+}
+
+.high-contrast .enhanced-tooltip:hover {
+  background-color: rgba(71, 85, 105, 0.5);
+}
+
+/* Primary action button */
+.primary-button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s;
+}
+
+.primary-button:hover {
+  background-color: #2563eb;
+}
+
+.primary-button:disabled {
+  background-color: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.high-contrast .primary-button {
+  background-color: #60a5fa;
+  color: #0f172a;
+}
+
+.high-contrast .primary-button:hover {
+  background-color: #93c5fd;
+}
+
+.high-contrast .primary-button:disabled {
+  background-color: #475569;
+  color: #94a3b8;
+}
+
+/* Secondary action button */
+.secondary-button {
+  background-color: #f1f5f9;
+  color: #334155;
+  padding: 0.5rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.375rem;
+  transition: all 0.2s;
+}
+
+.secondary-button:hover {
+  background-color: #e2e8f0;
+}
+
+.secondary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.high-contrast .secondary-button {
+  background-color: #334155;
+  color: #f8fafc;
+  border-color: #475569;
+}
+
+.high-contrast .secondary-button:hover {
+  background-color: #475569;
+}
+
+/* Error message */
+.error-message {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.375rem;
+  border: 1px solid #fecaca;
+}
+
+.high-contrast .error-message {
+  background-color: #7f1d1d;
+  color: #fecaca;
+  border-color: #ef4444;
+}
+
+/* Loading indicator */
+.loading-indicator {
+  text-align: center;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Preset description styling */
+.preset-description {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+}
+
+.high-contrast .preset-description {
+  color: #94a3b8;
+}
+
+/* Animation for educational content */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Responsive grid */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+} 
