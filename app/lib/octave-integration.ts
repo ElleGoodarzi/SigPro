@@ -8,7 +8,7 @@
  * In a serverless environment, consider using a Docker container.
  */
 
-import { CodeExecutionResult } from '@/app/utils/codeExecutor';
+import { CodeExecutionResult } from '@/app/types/api';
 
 // In a Node.js environment, we would use:
 // import { exec } from 'child_process';

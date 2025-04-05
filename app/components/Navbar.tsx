@@ -15,6 +15,14 @@ const Navbar = () => {
     document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
   }, [isDarkMode]);
 
+  // Desktop navigation items
+  const navItems = [
+    { href: '/simulator', label: 'Simulator' },
+    { href: '/labs', label: 'Labs' },
+    { href: '/tutorials', label: 'Tutorials' },
+    { href: '/tools', label: 'Tools' },
+  ];
+
   return (
     <>
       <div className="navbar bg-base-200 shadow-sm border-b border-primary/20">
@@ -40,17 +48,27 @@ const Navbar = () => {
           </div>
           
           {/* Desktop navigation */}
+          <div className="flex-none hidden md:block">
+            <ul className="menu menu-horizontal px-1">
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="font-mono text-sm tracking-tight">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
           <div className="flex-none hidden md:flex">
             <ul className="menu menu-horizontal px-1 gap-1 font-mono text-sm">
-              <li>
-                <Link href="/simulator" className="hover:text-primary hover:bg-base-300 transition-colors">Simulator</Link>
-              </li>
-              <li>
-                <Link href="/labs" className="hover:text-primary hover:bg-base-300 transition-colors">Labs</Link>
-              </li>
-              <li>
-                <Link href="/tutorials" className="hover:text-primary hover:bg-base-300 transition-colors">Tutorials</Link>
-              </li>
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
               <li>
                 <a href="https://github.com/your-username/sigprp" target="_blank" rel="noopener noreferrer" className="hover:text-accent hover:bg-base-300 transition-colors">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -58,6 +76,14 @@ const Navbar = () => {
                   </svg>
                   GitHub
                 </a>
+              </li>
+              <li>
+                <button onClick={() => setIsShortcutsModalOpen(true)}>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+                  </svg>
+                  <span>Shortcuts</span>
+                </button>
               </li>
             </ul>
             <div className="dropdown dropdown-end ml-2">
@@ -105,16 +131,14 @@ const Navbar = () => {
               </button>
             </div>
             <div className="p-4">
-              <ul className="menu w-full font-mono">
-                <li>
-                  <Link href="/simulator" onClick={() => setIsMenuOpen(false)} className="hover:text-primary hover:bg-base-300">Simulator</Link>
-                </li>
-                <li>
-                  <Link href="/labs" onClick={() => setIsMenuOpen(false)} className="hover:text-primary hover:bg-base-300">Labs</Link>
-                </li>
-                <li>
-                  <Link href="/tutorials" onClick={() => setIsMenuOpen(false)} className="hover:text-primary hover:bg-base-300">Tutorials</Link>
-                </li>
+              <ul className="menu bg-base-100 w-full">
+                {navItems.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} onClick={() => setIsMenuOpen(false)}>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
                 <li>
                   <a href="https://github.com/your-username/sigprp" target="_blank" rel="noopener noreferrer" className="hover:text-accent hover:bg-base-300">
                     GitHub
@@ -138,10 +162,13 @@ const Navbar = () => {
                 <li><a className="hover:text-primary hover:bg-base-300">About</a></li>
                 <li>
                   <button onClick={() => {
-                    setIsMenuOpen(false);
                     setIsShortcutsModalOpen(true);
-                  }} className="hover:text-primary hover:bg-base-300">
-                    Keyboard Shortcuts
+                    setIsMenuOpen(false);
+                  }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+                    </svg>
+                    <span>Keyboard Shortcuts</span>
                   </button>
                 </li>
               </ul>

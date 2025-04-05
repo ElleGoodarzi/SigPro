@@ -5,6 +5,9 @@
 /* Import Fira Code for a more nerdy, code-like feel */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 
+/* Import Orbitron font for sci-fi styling */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
 @layer base {
   :root {
     --hue-primary: 210; /* More blue-teal hue for sci-fi feel */
@@ -28,6 +31,23 @@
   /* Mathematical symbols and equations */
   .math-eq {
     @apply font-mono tracking-tight;
+  }
+
+  /* Comic Geeky Fonts */
+  .font-comic {
+    font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+  }
+
+  .font-silkscreen {
+    font-family: 'Silkscreen', 'VT323', monospace;
+  }
+
+  .font-orbitron {
+    font-family: 'Orbitron', 'Space Mono', sans-serif;
+  }
+
+  .font-press-start {
+    font-family: 'Press Start 2P', 'VT323', monospace;
   }
 }
 
@@ -255,11 +275,9 @@
 
   /* Neon glow effects */
   .neon-text {
-    color: theme('colors.primary.400');
-    text-shadow: 0 0 2px theme('colors.primary.400'),
-                 0 0 4px rgba(var(--p-rgb), 0.4);
-    -webkit-text-stroke: 0.5px theme('colors.primary.700');
-    letter-spacing: 0.5px;
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
+    animation: neon-pulse 2s infinite;
   }
 
   .neon-border {
@@ -406,4 +424,649 @@
   100% {
     top: 100%;
   }
+}
+
+/* Additional styles for Z-Transform tutorial */
+@keyframes neon-pulse {
+  0% { text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff; }
+  50% { text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff; }
+  100% { text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff; }
+}
+
+/* Math equation styling */
+pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Math equations styling */
+.math-eq {
+  font-family: 'Times New Roman', serif;
+  line-height: 1.5;
+}
+
+.math-eq sub, 
+.math-eq sup {
+  font-size: 0.75em;
+  line-height: 0;
+  position: relative;
+}
+
+.math-eq sub {
+  bottom: -0.25em;
+}
+
+.math-eq sup {
+  top: -0.5em;
+}
+
+.math-frac {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.math-eq .integral {
+  font-size: 1.5em;
+  vertical-align: middle;
+  position: relative;
+  display: inline-block;
+  margin: 0 0.1em;
+}
+
+/* Custom styling for Z-transform tutorial */
+.z-transform-container .math-eq {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  border-radius: 4px;
+  box-shadow: inset 0 0 3px rgba(0, 255, 255, 0.3);
+}
+
+/* Tooltip styling */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-container:hover .tooltip {
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.tooltip {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 5px;
+  min-width: 200px;
+  max-width: 300px;
+  background-color: #1a202c;
+  color: #cbd5e0;
+  border: 1px solid #0e7490;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  z-index: 100;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 0 3px rgba(0, 206, 209, 0.5);
+}
+
+.tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 10px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent #0e7490 transparent;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Add these new CSS classes for the Z-transform tool */
+
+/* Comic-style border for panels */
+.z-comic-border {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.z-comic-border::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid rgba(75, 105, 255, 0.3);
+  pointer-events: none;
+  border-radius: 0.5rem;
+}
+
+/* Comic-style dots pattern background */
+.z-dots-pattern {
+  background-image: radial-gradient(rgba(120, 140, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: 0 0;
+}
+
+/* Comic-style heading text with outline */
+.z-comic-heading {
+  color: white;
+  text-shadow: 
+    -1px -1px 0 rgba(0, 200, 255, 0.7),
+    1px -1px 0 rgba(0, 200, 255, 0.7),
+    -1px 1px 0 rgba(0, 200, 255, 0.7),
+    1px 1px 0 rgba(0, 200, 255, 0.7),
+    0 0 10px rgba(0, 180, 255, 0.5);
+  letter-spacing: 0.5px;
+}
+
+/* Glow effect for z-transform buttons */
+.z-glow-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.z-glow-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 20%,
+    rgba(100, 180, 255, 0.1) 30%,
+    transparent 40%
+  );
+  transform: rotate(45deg);
+  animation: z-glow-sweep 3s linear infinite;
+}
+
+@keyframes z-glow-sweep {
+  0% {
+    transform: rotate(45deg) translateY(-100%);
+  }
+  100% {
+    transform: rotate(45deg) translateY(100%);
+  }
+}
+
+/* Special z-transform math styling */
+.z-transform-math {
+  font-family: 'Space Mono', monospace;
+  color: rgb(210, 235, 255);
+}
+
+/* Enhanced pulse animation for important elements */
+.z-pulse {
+  animation: z-pulse-animation 2s infinite;
+}
+
+@keyframes z-pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0 rgba(80, 120, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(80, 120, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(80, 120, 255, 0);
+  }
+}
+
+/* Styling specifically for the 3D plot container */
+.z-transform-3d-container {
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.z-transform-3d-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(
+      to bottom right,
+      rgba(80, 60, 200, 0.1),
+      rgba(40, 30, 100, 0.05)
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Circuit-board pattern for backgrounds */
+.z-circuit-pattern {
+  background-color: rgba(16, 24, 39, 0.8);
+  background-image: 
+    linear-gradient(rgba(75, 105, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(75, 105, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(75, 105, 255, 0.05) 0.5px, transparent 0.5px),
+    linear-gradient(90deg, rgba(75, 105, 255, 0.05) 0.5px, transparent 0.5px);
+  background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+  background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+}
+
+/* Comic-style emphasis box */
+.z-emphasis-box {
+  background: rgba(60, 80, 180, 0.1);
+  border-left: 3px solid rgba(100, 180, 255, 0.7);
+  padding: 1rem;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.z-emphasis-box::before {
+  content: '!';
+  position: absolute;
+  top: 0.5rem;
+  left: -12px;
+  background: rgba(100, 180, 255, 0.9);
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Style for sequence blocks */
+.z-sequence-block {
+  font-family: 'Fira Code', monospace;
+  background-color: rgba(40, 50, 80, 0.3);
+  border: 1px solid rgba(80, 120, 180, 0.3);
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+/* Z-Transform Tool Comic Style Elements */
+
+/* Circuit pattern background for panels */
+.z-circuit-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(49, 46, 129, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(49, 46, 129, 0.05) 1px, transparent 1px),
+    radial-gradient(circle, rgba(79, 70, 229, 0.02) 1px, transparent 2px);
+  background-size: 20px 20px, 20px 20px, 40px 40px;
+}
+
+/* Z-dots pattern for backgrounds */
+.z-dots-pattern {
+  background-image: radial-gradient(circle, rgba(99, 102, 241, 0.15) 1px, transparent 1px);
+  background-size: 15px 15px;
+}
+
+/* Circuit elements for decorative backgrounds */
+.circuit-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10,10 L90,10 M90,10 L90,90 M90,90 L10,90 M10,90 L10,10 M30,10 L30,30 M30,30 L50,30 M50,30 L50,50 M50,50 L70,50 M70,50 L70,70 M70,70 L90,70' stroke='%236366F1' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+}
+
+.circuit-pattern-2 {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10,50 C30,30 70,30 90,50 C70,70 30,70 10,50 Z M30,50 A20,20 0 1,1 70,50 A20,20 0 1,1 30,50 Z' stroke='%238B5CF6' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+}
+
+.circuit-element {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' stroke='%238B5CF6' stroke-width='1' fill='none'/%3E%3Cline x1='10' y1='50' x2='90' y2='50' stroke='%238B5CF6' stroke-width='1'/%3E%3Cline x1='50' y1='10' x2='50' y2='90' stroke='%238B5CF6' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+.bulb-icon {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40,80 L60,80 M40,90 L60,90 M50,10 C30,10 20,30 20,50 C20,65 35,70 40,75 L40,80 L60,80 L60,75 C65,70 80,65 80,50 C80,30 70,10 50,10 Z' stroke='%23A78BFA' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+}
+
+.gear-icon {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50,20 L55,10 L60,20 M70,30 L85,25 L75,35 M80,50 L95,50 L80,55 M70,70 L85,80 L70,75 M50,80 L55,95 L45,90 M30,70 L15,80 L25,65 M20,50 L5,50 L15,45 M30,30 L15,25 L25,15 M50,35 C41.716,35 35,41.716 35,50 C35,58.284 41.716,65 50,65 C58.284,65 65,58.284 65,50 C65,41.716 58.284,35 50,35 Z' stroke='%23A78BFA' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+}
+
+/* Comic-style headings with subtle shadow */
+.z-comic-heading {
+  letter-spacing: -0.025em;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+}
+
+/* Glow effects for buttons and interactive elements */
+.z-glow-button {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.z-glow-button:hover {
+  box-shadow: 0 0 8px 2px rgba(99, 102, 241, 0.3);
+}
+
+.z-glow-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(99, 102, 241, 0.2), 
+    transparent
+  );
+  transition: all 0.6s;
+}
+
+.z-glow-button:hover:before {
+  left: 100%;
+}
+
+/* Comic-style border with subtle shadow effect */
+.z-comic-border {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 
+              0 2px 4px -1px rgba(0, 0, 0, 0.2),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+/* Comic-style callout with subtle pointer */
+.z-comic-callout {
+  position: relative;
+}
+
+.z-comic-callout:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  background: inherit;
+  border-right: 1px solid rgba(79, 70, 229, 0.5);
+  border-bottom: 1px solid rgba(79, 70, 229, 0.5);
+  transform: rotate(45deg);
+  z-index: -1;
+  opacity: 0.7;
+}
+
+/* Text shadow glow effect for headers */
+.text-shadow-glow {
+  text-shadow: 0 0 5px rgba(99, 102, 241, 0.5);
+}
+
+/* Cyan glow effect for icons */
+.glow-cyan {
+  filter: drop-shadow(0 0 3px rgba(34, 211, 238, 0.5));
+}
+
+/* Hide scrollbars in overflow containers */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Toggle-style checkbox */
+.toggle-checkbox {
+  appearance: none;
+  position: relative;
+  width: 40px;
+  height: 20px;
+  background-color: rgba(75, 85, 99, 0.4);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggle-checkbox:checked {
+  background-color: rgba(99, 102, 241, 0.8);
+}
+
+.toggle-checkbox:before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  background-color: white;
+  transition: transform 0.3s;
+}
+
+.toggle-checkbox:checked:before {
+  transform: translateX(20px);
+}
+
+/* Z-transform 3D container custom styles */
+.z-transform-3d-container {
+  min-height: 600px;
+}
+
+/* Reduce motion for accessibility */
+.reduce-motion * {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Z-Transform Tool Fullscreen Mode */
+.fullscreen-mode {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background-color: #111827;
+}
+
+/* Plot container optimization for different screen sizes */
+.plotly-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 700px;
+}
+
+@media (max-width: 768px) {
+  .plotly-container {
+    min-height: 500px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .plotly-container {
+    min-height: 800px;
+  }
+}
+
+/* Enhance tab panels */
+.tab-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Custom scrollbar for the tool */
+.z-transform-tool ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.z-transform-tool ::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.7);
+  border-radius: 4px;
+}
+
+.z-transform-tool ::-webkit-scrollbar-thumb {
+  background: rgba(0, 200, 255, 0.5);
+  border-radius: 4px;
+}
+
+.z-transform-tool ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 200, 255, 0.7);
+}
+
+/* Focus outline for better accessibility */
+.z-transform-tool button:focus, 
+.z-transform-tool select:focus,
+.z-transform-tool input:focus {
+  outline: 2px solid rgba(0, 200, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Z-Transform Tool Specific Styles */
+.z-transform-tool {
+  font-family: 'Space Mono', 'Fira Code', monospace;
+}
+
+.z-transform-tool h1,
+.z-transform-tool h2,
+.z-transform-tool h3 {
+  font-family: 'Orbitron', 'Space Mono', sans-serif;
+}
+
+.z-transform-tool .comic-text {
+  font-family: 'Comic Neue', cursive;
+  font-weight: 700;
+}
+
+.z-transform-tool .digital-text {
+  font-family: 'Silkscreen', 'VT323', monospace;
+  letter-spacing: 1px;
+}
+
+.z-transform-comic-panel {
+  border: 3px solid #000;
+  border-radius: 2px;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.8);
+  position: relative;
+  background-color: white;
+  padding: 20px;
+  color: #333;
+  font-family: 'Comic Neue', cursive;
+  font-weight: 700;
+}
+
+.z-transform-sci-fi-panel {
+  background: linear-gradient(135deg, rgba(20, 30, 48, 0.9), rgba(10, 15, 30, 0.95));
+  border: 1px solid rgba(0, 180, 255, 0.3);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 150, 255, 0.2), inset 0 0 10px rgba(0, 100, 150, 0.1);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.z-transform-sci-fi-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 200, 255, 0.1), transparent);
+  animation: sci-fi-panel-shine 4s linear infinite;
+}
+
+@keyframes sci-fi-panel-shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.z-transform-equation {
+  font-family: 'CMU Serif', Georgia, serif;
+  background-color: rgba(20, 30, 50, 0.7);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 200, 255, 0.3);
+  padding: 15px;
+  color: #00ccff;
+  text-align: center;
+  line-height: 1.8;
+  box-shadow: inset 0 0 10px rgba(0, 150, 200, 0.2);
+  margin: 15px 0;
+}
+
+/* Sci-fi glow effect for text */
+.text-glow-cyan {
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.7), 0 0 10px rgba(0, 200, 255, 0.5);
+}
+
+.text-glow-purple {
+  text-shadow: 0 0 5px rgba(180, 0, 255, 0.7), 0 0 10px rgba(150, 0, 200, 0.5);
+}
+
+.text-glow-green {
+  text-shadow: 0 0 5px rgba(0, 255, 100, 0.7), 0 0 10px rgba(0, 200, 80, 0.5);
+}
+
+/* Comic speech bubble */
+.comic-speech-bubble {
+  position: relative;
+  background: white;
+  border-radius: 1em;
+  padding: 1em;
+  border: 3px solid black;
+  font-family: 'Comic Neue', cursive;
+  font-weight: 700;
+  color: #333;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+  max-width: 100%;
+}
+
+.comic-speech-bubble:after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  border: 10px solid transparent;
+  border-top-color: white;
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -10px;
+  margin-bottom: -10px;
+  transform: skew(20deg);
+  box-shadow: 3px 0 0 black;
+}
+
+/* Custom scrollbar for z-transform tool */
+.z-transform-tool ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.z-transform-tool ::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.7);
+  border-radius: 4px;
+}
+
+.z-transform-tool ::-webkit-scrollbar-thumb {
+  background: rgba(0, 200, 255, 0.5);
+  border-radius: 4px;
+}
+
+.z-transform-tool ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 200, 255, 0.7);
+}
+
+/* Focus outline for better accessibility */
+.z-transform-tool button:focus, 
+.z-transform-tool select:focus,
+.z-transform-tool input:focus {
+  outline: 2px solid rgba(0, 200, 255, 0.5);
+  outline-offset: 2px;
 } 

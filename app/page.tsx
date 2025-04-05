@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import ErrorBoundary from './components/ErrorBoundary';
+import ZTransformSciFiVisualizer from './components/ZTransformSciFiVisualizer';
 
 export default function Home() {
   const [glitchIndex, setGlitchIndex] = useState(0);
@@ -108,6 +109,70 @@ f = (0:N-1)*(fs/N); % Frequency vector
 X_mag = abs(X)/N;   % Normalized magnitude`}
                 </code>
               </pre>
+            </div>
+          </div>
+        </div>
+
+        {/* Enhanced Z-Transform Feature Section */}
+        <div className="container mx-auto px-4 py-16 crt-overlay">
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            <div className="md:w-1/2 order-2 md:order-1">
+              <div className="terminal-like p-6 neon-border">
+                <pre className="font-mono text-sm whitespace-pre-wrap">
+                  <code>
+{`% Interactive Z-Transform Explorer
+// Add poles and zeros directly on the Z-plane
+addPole(0.8, 0);     // Add pole at z = 0.8
+addZero(-0.5, 0);    // Add zero at z = -0.5
+
+// Visualize custom signals
+signal = [1, 0.5, 0.25, 0.125, 0.0625];
+plotSignal(signal);
+
+// Export your visualization
+exportVisualization('png', 'my-z-transform.png');
+
+// Keyboard shortcuts for quick navigation
+// P - Add poles
+// Z - Add zeros
+// R - Reset view
+// H - Show help
+`}
+                  </code>
+                </pre>
+              </div>
+            </div>
+            
+            <div className="md:w-1/2 order-1 md:order-2">
+              <h2 className="text-3xl font-bold mb-4 retro-text neon-text">Enhanced Z-Transform</h2>
+              <p className="mb-4 font-mono">
+                Our newly improved Z-transform tool now features interactive pole-zero placement,
+                customizable visualizations, and direct manipulation of the complex Z-plane.
+              </p>
+              <p className="mb-6 font-mono">
+                Perfect for learning signal processing concepts through hands-on experimentation
+                with real-time feedback and intuitive controls.
+              </p>
+              <Link href="/tools/z-transform" className="btn btn-nerd">
+                Try New Features
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Z-Transform Interactive Visualizer */}
+        <div className="container mx-auto px-4 py-16 my-8 bg-gray-900/80 backdrop-blur-sm rounded-xl shadow-lg">
+          <h2 className="text-3xl font-bold mb-8 text-center retro-text neon-text">Z-Transform Interactive Visualizer</h2>
+          <div className="max-w-7xl mx-auto">
+            <ZTransformSciFiVisualizer 
+              width={1300}
+              height={700}
+              className="mb-8 shadow-2xl"
+            />
+            <div className="flex justify-center">
+              <Link href="/tools/z-transform" className="btn btn-nerd btn-lg">
+                Open Full Tool
+              </Link>
             </div>
           </div>
         </div>

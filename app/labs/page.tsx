@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import ErrorBoundary from '../components/ErrorBoundary';
 
@@ -9,12 +9,11 @@ const labs = [
   {
     id: 'matlab-functions-sampling',
     title: 'MATLAB Functions & Sampling Theorem',
-    description: 'Learn to create MATLAB functions and understand the Sampling Theorem in digital signal processing.',
-    difficulty: 'Intermediate',
-    duration: '2-3 hours',
-    topics: ['MATLAB', 'Functions', 'Sampling', 'Aliasing'],
-    image: '/images/sampling-theorem.png'
+    description: 'Learn about MATLAB functions and the Nyquist-Shannon sampling theorem.',
+    image: '/images/lab-matlab.png', 
+    difficulty: 'Intermediate'
   }
+  // Z-transform lab removed to avoid redundancy with the main Z-transform tool
 ];
 
 // Difficulty badge color mapping
@@ -25,7 +24,7 @@ const difficultyColors = {
 };
 
 export default function LabsPage() {
-  const [filterDifficulty, setFilterDifficulty] = useState<string | null>(null);
+  const [filterDifficulty, setFilterDifficulty] = React.useState<string | null>(null);
   
   // Filter labs based on selected difficulty
   const filteredLabs = filterDifficulty 
@@ -73,54 +72,24 @@ export default function LabsPage() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredLabs.map((lab, index) => (
-            <div 
-              key={lab.id} 
-              className="card overflow-hidden transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
-            >
-              {/* Comic-style lab number */}
-              <div className="absolute -right-10 -top-10 bg-primary-500 text-white w-24 h-24 rounded-full flex items-end justify-start p-3 font-bold transform rotate-12 neon-border z-10">
-                <span className="text-2xl space-mono">#3</span>
-              </div>
-              
-              {/* Difficulty indicator at the top */}
-              <div 
-                className={`absolute top-0 left-0 right-0 h-2 ${
-                  lab.difficulty === 'Beginner' ? 'bg-success' : 
-                  lab.difficulty === 'Intermediate' ? 'bg-warning' : 
-                  'bg-error'
-                }`}
-              ></div>
-            
-              <div className="relative p-6 pt-4 pb-3 bg-neutral-900 crt-overlay">
-                <h3 className="text-xs uppercase tracking-wide font-mono opacity-60 mb-1">{lab.difficulty} • {lab.duration}</h3>
-                <h2 className="text-xl space-mono font-bold mb-1">{lab.title}</h2>
-                <div className="h-1 w-16 bg-primary-500 mb-3"></div>
-                <div className="flex flex-wrap gap-1 my-1">
-                  {lab.topics.map(topic => (
-                    <span key={topic} className="inline-block text-xs bg-base-300 bg-opacity-30 px-2 py-0.5 rounded font-mono">
-                      {topic}
-                    </span>
-                  ))}
+            <Link key={lab.id} href={`/labs/${lab.id}`}>
+              <div className="bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg hover:shadow-cyan-900/30 transition-all duration-300 h-full flex flex-col border border-gray-700 hover:border-cyan-700">
+                <div className="bg-gray-900 h-40 flex items-center justify-center">
+                  {/* Use a default gradient if no image is available */}
+                  <div className="text-4xl font-bold text-cyan-400">#{index + 1}</div>
                 </div>
-                <p className="text-sm font-mono mt-3 mb-4 min-h-[60px]">{lab.description}</p>
-                
-                <div className="card-actions mt-3 flex justify-between items-center">
-                  <div className={`text-xs font-mono ${
-                    lab.difficulty === 'Beginner' ? 'text-success' : 
-                    lab.difficulty === 'Intermediate' ? 'text-warning' : 
-                    'text-error'
-                  }`}>
-                    <div className="flex items-center">
-                      <span className="inline-block w-2 h-2 rounded-full bg-primary-500 mr-1 animate-pulse"></span>
-                      READY
-                    </div>
+                <div className="p-4 flex-grow">
+                  <div className="flex justify-between items-start mb-2">
+                    <h2 className="text-xl font-bold text-white">{lab.title}</h2>
+                    <span className="text-xs bg-cyan-900 text-cyan-100 px-2 py-1 rounded">{lab.difficulty}</span>
                   </div>
-                  <Link href={`/labs/${lab.id}`} className="btn btn-nerd btn-sm">
-                    <span className="font-mono tracking-wide">Access Lab</span> <span className="ml-1">→</span>
-                  </Link>
+                  <p className="text-gray-400">{lab.description}</p>
+                </div>
+                <div className="bg-gray-900 p-3 text-right">
+                  <span className="text-cyan-400 text-sm">Start Lab →</span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         

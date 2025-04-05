@@ -5,6 +5,7 @@
 
 # testing
 /coverage
+/.nyc_output
 
 # next.js
 /.next/
@@ -24,10 +25,20 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts 
+next-env.d.ts
+
+# temporary files
+*.bak
+*.swp
+*.tmp
+
+# backup directories
+*-backups-*/
+backup-* 

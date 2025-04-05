@@ -256,3 +256,29 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Plotly.js team for visualization
 - Octave.js team for code execution
 - All contributors and users
+
+## Z-Transform Tool
+
+The Z-Transform Tool is a powerful interactive visualization that helps students learn and experiment with Z-transforms, discrete-time signals, and system properties.
+
+### Key Features
+
+- **Interactive 3D Visualization**: See how the Z-transform magnitude varies across the complex plane
+- **Poles and Zeros Analysis**: Understand stability, causality, and phase characteristics 
+- **Educational Signal Presets**: Experiment with common signals and their Z-transforms
+- **ROC Visualization**: Explore Regions of Convergence and their properties
+- **Signal Builder**: Create custom signals and see their Z-transforms in real-time
+- **System Analysis**: Get insights on stability, causality, and minimum-phase properties
+- **Gamified Learning Experience**: Progress through concepts with achievements and quests
+- **Customizable Themes**: Choose from various visualization themes with game-like aesthetics
+
+### Educational Benefits
+
+- Use the built-in Learning Guide for concise Z-transform concepts
+- Try the preset signals to see important Z-transform properties
+- Visualize how changing input sequences affects poles, zeros, and the ROC
+- Learn system stability and causality through interactive exploration
+- Receive instant feedback on signal properties and system characteristics
+- Develop intuition for Z-transform properties through visual experimentation
+
+The tool provides a unique, interactive way for students to develop a deeper understanding of Z-transforms by connecting mathematical concepts with visual representations.
