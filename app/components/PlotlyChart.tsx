@@ -6,21 +6,43 @@ import { PlotData } from '@/app/types/api';
 import Loading from './Loading';
 import ErrorBoundary from './ErrorBoundary';
 
-// Dynamically import Plotly
+// Improved dynamic import for Plotly
 const Plot = dynamic(
-  () => import('react-plotly.js')
-    .then(mod => mod.default)
-    .catch(err => {
-      console.error('Failed to load Plotly:', err);
-      return () => (
-        <div className="flex items-center justify-center h-full bg-base-300 text-center p-4" role="alert" aria-live="assertive">
-          <div>
-            <p className="text-error mb-2">Visualization failed to load</p>
-            <p>Please refresh the page to try again.</p>
+  () => {
+    // Force client-side only import with explicit namespace for webpack
+    return import(/* webpackChunkName: "plotly" */ 'react-plotly.js')
+      .then(mod => {
+        console.log('Successfully loaded Plotly.js');
+        // Add hover event protection to prevent _hoversubplot null error
+        if (typeof window !== 'undefined') {
+          window.addEventListener('error', (e) => {
+            // Catch and suppress the specific Plotly error
+            if (e.message && (
+              e.message.includes('_hoversubplot = null') || 
+              e.message.includes('undefined is not an object') ||
+              e.message.includes('gd._fullLayout')
+            )) {
+              console.warn('Suppressed Plotly hover error:', e.message);
+              e.preventDefault();
+              e.stopPropagation();
+              return true; // Prevent default error handling
+            }
+          }, true);
+        }
+        return mod.default;
+      })
+      .catch(err => {
+        console.error('Failed to load Plotly:', err);
+        return () => (
+          <div className="flex items-center justify-center h-full bg-base-300 text-center p-4" role="alert" aria-live="assertive">
+            <div>
+              <p className="text-error mb-2">Visualization failed to load</p>
+              <p>Please refresh the page to try again.</p>
+            </div>
           </div>
-        </div>
-      );
-    }),
+        );
+      });
+  },
   { 
     ssr: false,
     loading: () => <Loading message="Loading visualization..." /> 
