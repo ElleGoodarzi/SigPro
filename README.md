@@ -1,284 +1,93 @@
 # Signal Processing Lab Simulator
 
-A modern, interactive web-based simulator for teaching signal processing concepts with a sci-fi aesthetic.
+A modern web-based simulator for teaching signal processing concepts through interactive visualizations and code execution.
 
-## 🚀 Overview
+## Overview
 
-This project is a Next.js-based web application that provides an interactive environment for learning signal processing concepts. It features a MATLAB/Octave-like code editor, real-time visualizations, and a structured learning path through various signal processing topics.
+This Next.js application provides an educational environment for learning signal processing with a MATLAB/Octave-compatible code editor, real-time visualizations, and structured learning modules.
 
-## 🛠️ Technical Stack
+## Technical Stack
 
-### Core Technologies
-- **Framework**: Next.js 14.2.25
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: DaisyUI 4.12.24
+- **Framework**: Next.js 14.2.25 with TypeScript
+- **Styling**: Tailwind CSS with DaisyUI
+- **Code Editor**: Monaco Editor with MATLAB/Octave syntax
+- **Visualization**: Plotly.js for interactive charts
+- **Code Execution**: Octave.js for MATLAB compatibility
 
-### Key Libraries
-- **Code Editor**: Monaco Editor
-- **Visualization**: Plotly.js
-- **Code Execution**: Octave.js
-- **State Management**: React Hooks
-- **Styling**: Custom CSS with Tailwind
+## Key Features
 
-## 📁 Project Structure
+### Code Editor
+- MATLAB/Octave syntax highlighting and execution
+- Real-time error handling and console output
+- Terminal-style interface
 
-```
-/app
-├── /labs
-│   └── /matlab-functions-sampling
-│       └── page.tsx
-├── /simulator
-│   └── page.tsx
-└── /api
-    └── /execute
-        └── route.ts
-```
+### Visualization System
+- Time and frequency domain plotting
+- Interactive charts with zoom and pan
+- Real-time plot updates
 
-## 🔧 Core Features
+### Learning Tools
+- Structured lab modules and tutorials
+- Z-Transform interactive visualizer
+- Filter design tools
+- Signal comparison utilities
 
-### 1. Code Editor
-- Monaco Editor integration
-- MATLAB/Octave syntax highlighting
-- Terminal-like interface
-- Real-time code execution
-- Error handling and display
+## Installation
 
-### 2. Visualization System
-- Time domain plots
-- Frequency domain plots
-- Interactive Plotly charts
-- Custom sci-fi styling
-- Real-time updates
+```bash
+# Install dependencies
+npm install
 
-### 3. Learning Interface
-- Step-based progress tracking
-- Interactive navigation
-- Educational content structure
-- Visual progress indicators
+# Start development server
+npm run dev
 
-### 4. UI/UX Design
-- Sci-fi aesthetic
-- Neon effects
-- Grid blueprint background
-- CRT overlay effects
-- Holographic elements
-
-## 🎨 Styling System
-
-### Custom CSS Classes
-```css
-.space-mono      /* Terminal text styling */
-.grid-blueprint  /* Background grid */
-.panel-sci-fi    /* Container styling */
-.crt-overlay     /* Visual effects */
-.hologram        /* Animation effects */
+# Build for production
+npm run build
 ```
 
-### Theme Components
-- Neon text effects
-- Grid blueprint background
-- Panel styling with borders
-- Shadow effects
-- Animation system
+## Usage
 
-## 🔄 Data Flow
+The simulator supports standard MATLAB/Octave syntax for signal processing operations:
 
-1. **Code Input**
-   - User enters MATLAB/Octave code
-   - Code is validated and processed
-
-2. **Code Execution**
-   - Code sent to API endpoint
-   - Octave.js processes code
-   - Results are generated
-
-3. **Visualization**
-   - Plot data is extracted
-   - Plotly charts are updated
-   - UI is refreshed
-
-## 🛡️ Error Handling
-
-### Code Execution
-- Syntax error detection
-- Runtime error handling
-- Console error display
-
-### UI States
-- Loading states
-- Error messages
-- Fallback displays
-
-## 📊 API Integration
-
-### Code Execution Flow
-1. User enters code
-2. Code sent to `/api/execute`
-3. Octave.js processes code
-4. Results returned to frontend
-5. Visualizations updated
-
-### Data Processing
-- MATLAB/Octave code parsing
-- Figure data extraction
-- Plot data formatting
-- Error handling
-
-## 🔒 Security Considerations
-
-- Code execution sandboxing
-- Input validation
-- Error handling
-- Resource limits
-
-## 🚀 Performance Optimizations
-
-### Code Execution
-- Asynchronous processing
-- Batch updates
-- Error recovery
-
-### Rendering
-- Efficient state updates
-- Optimized re-renders
-- Lazy loading
-
-## 📦 Dependencies
-
-```json
-{
-  "dependencies": {
-    "next": "14.2.25",
-    "react": "latest",
-    "plotly.js": "latest",
-    "monaco-editor": "latest",
-    "octave.js": "latest",
-    "tailwindcss": "latest",
-    "daisyui": "4.12.24"
-  }
-}
-```
-
-## 🎯 Future Improvements
-
-### Planned Features
-- Additional plot types
-- More interactive features
-- Enhanced error handling
-- Performance optimizations
-- Additional lab content
-
-### Technical Enhancements
-- Code execution optimization
-- Visualization improvements
-- UI/UX refinements
-- Mobile responsiveness
-
-## 🛠️ Development Setup
-
-1. **Prerequisites**
-   - Node.js (v18 or higher)
-   - npm or yarn
-
-2. **Installation**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-3. **Development Server**
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-4. **Build**
-   ```bash
-   npm run build
-   # or
-   yarn build
-   ```
-
-## 📝 Usage Examples
-
-### Basic Signal Generation
 ```matlab
-% Generate a simple sine wave
+% Generate and plot a signal
 t = 0:0.01:2;
-f = 2;
-x = sin(2*pi*f*t);
-
-% Plot the signal
+x = sin(2*pi*2*t);
 plot(t, x);
-title('Time Domain Signal');
-xlabel('Time (s)');
-ylabel('Amplitude');
-grid on;
+title('Sine Wave');
 ```
 
-### FFT Analysis
-```matlab
-% Calculate and plot FFT
-Fs = 100;
-N = length(x);
-freq = (-N/2:N/2-1)*(Fs/N);
-X = fftshift(fft(x))/N;
+## Project Structure
 
-plot(freq, abs(X));
-title('Frequency Domain');
-xlabel('Frequency (Hz)');
-ylabel('Magnitude');
-grid on;
 ```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a new Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 👥 Authors
-
-- Elle Goodarzi - Initial work
-
-## 🙏 Acknowledgments
-
-- Next.js team for the framework
-- Plotly.js team for visualization
-- Octave.js team for code execution
-- All contributors and users
+app/
+├── labs/           # Educational lab modules
+├── tools/          # Interactive tools (Z-transform, filters)
+├── tutorials/      # Learning materials
+├── api/           # Backend API routes
+└── components/    # Reusable UI components
+```
 
 ## Z-Transform Tool
 
-The Z-Transform Tool is a powerful interactive visualization that helps students learn and experiment with Z-transforms, discrete-time signals, and system properties.
+Interactive 3D visualization for exploring Z-transforms, poles/zeros analysis, and system properties. Features include:
 
-### Key Features
+- Complex plane visualization with ROC
+- Educational signal presets
+- Real-time system analysis
+- Stability and causality assessment
 
-- **Interactive 3D Visualization**: See how the Z-transform magnitude varies across the complex plane
-- **Poles and Zeros Analysis**: Understand stability, causality, and phase characteristics 
-- **Educational Signal Presets**: Experiment with common signals and their Z-transforms
-- **ROC Visualization**: Explore Regions of Convergence and their properties
-- **Signal Builder**: Create custom signals and see their Z-transforms in real-time
-- **System Analysis**: Get insights on stability, causality, and minimum-phase properties
-- **Gamified Learning Experience**: Progress through concepts with achievements and quests
-- **Customizable Themes**: Choose from various visualization themes with game-like aesthetics
+## Contributing
 
-### Educational Benefits
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
-- Use the built-in Learning Guide for concise Z-transform concepts
-- Try the preset signals to see important Z-transform properties
-- Visualize how changing input sequences affects poles, zeros, and the ROC
-- Learn system stability and causality through interactive exploration
-- Receive instant feedback on signal properties and system characteristics
-- Develop intuition for Z-transform properties through visual experimentation
+## License
 
-The tool provides a unique, interactive way for students to develop a deeper understanding of Z-transforms by connecting mathematical concepts with visual representations.
+MIT License - see LICENSE file for details.
+
+## Author
+
+Elle Goodarzi
