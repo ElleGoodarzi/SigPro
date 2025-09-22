@@ -1,0 +1,42 @@
+{
+  "euler": {
+    "title": "Euler's Formula",
+    "content": "e^(jωt) = cos(ωt) + j·sin(ωt). The key to understanding why complex exponentials are the building blocks of all signals.",
+    "action": "Try changing the phase slider to see real and imaginary parts."
+  },
+  "hermitian": {
+    "title": "Hermitian Symmetry",
+    "content": "For real signals, X[-k] = X[k]*. Whatever's at +f has a mirror at -f. This pairing cancels imaginary parts to make real wiggles.",
+    "action": "Click a stem to see its mirror. Watch the Hermitian badge."
+  },
+  "pairing": {
+    "title": "Frequency Pairing",
+    "content": "Each +/− frequency pair creates one real cosine wiggle. The math: X[k]e^(jωt) + X[-k]e^(-jωt) = real waveform.",
+    "action": "Select a pair to see how +k and -k combine in time."
+  },
+  "orthogonality": {
+    "title": "Orthogonality",
+    "content": "Different frequency tones don't interfere. Multiply by a reference tone and average to measure its coefficient cleanly.",
+    "action": "Use the Coefficient Lab to see this 'freeze and average' process."
+  },
+  "time_shift": {
+    "title": "Time Shift Property",
+    "content": "Shifting in time → phase rotation in frequency. f(t-τ) ↔ F(ω)e^(-jωτ)",
+    "action": "Adjust the phase slider to see time shifts."
+  },
+  "convolution": {
+    "title": "Convolution Theorem",
+    "content": "Time convolution = Frequency multiplication. This is why filtering works in the frequency domain.",
+    "action": "Check out the Filter Designer tool to see this in action."
+  },
+  "rect_sinc": {
+    "title": "Rect ↔ Sinc",
+    "content": "A rectangular window in time becomes a sinc function in frequency. This creates spectral leakage.",
+    "action": "Try different windows to see how they affect the spectrum."
+  },
+  "dft_sym_bins": {
+    "title": "DFT Bin Symmetry",
+    "content": "DFT bins are symmetric: k=0 (DC), k=1...N/2-1 (positive freqs), k=N/2 (Nyquist if N even), k=N/2+1...N-1 (negative freqs).",
+    "action": "Look at the full spectrum view to see this symmetry."
+  }
+}

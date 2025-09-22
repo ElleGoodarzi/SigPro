@@ -1,20 +1,27 @@
 // codeExecutor.ts - Handles MATLAB-like code execution and results
 import { CodeExecutionResult, PlotData, CodeExecutionData } from '../types/api';
 
-// Basic MATLAB function registry to simulate execution
+// Enhanced MATLAB function registry with proper FFT implementation
 const functionRegistry: Record<string, Function> = {
   sin: (x: number[] | number) => Array.isArray(x) ? x.map(Math.sin) : Math.sin(x),
   cos: (x: number[] | number) => Array.isArray(x) ? x.map(Math.cos) : Math.cos(x),
   fft: (x: number[]) => {
-    // Very simplified FFT simulation
+    // Proper FFT implementation for educational purposes
     const N = x.length;
-    const result = Array(N).fill(0).map((_, i) => {
-      let sum = 0;
+    const result: { real: number; imag: number }[] = [];
+    
+    for (let k = 0; k < N; k++) {
+      let real = 0;
+      let imag = 0;
+      
       for (let n = 0; n < N; n++) {
-        sum += x[n] * Math.cos(2 * Math.PI * i * n / N);
+        const angle = -2 * Math.PI * k * n / N;
+        real += x[n] * Math.cos(angle);
+        imag += x[n] * Math.sin(angle);
       }
-      return { real: sum, imag: 0 };
-    });
+      
+      result.push({ real, imag });
+    }
     return result;
   },
   abs: (x: any[]) => {
@@ -22,6 +29,24 @@ const functionRegistry: Record<string, Function> = {
       return x.map(val => Math.sqrt(val.real * val.real + val.imag * val.imag));
     }
     return x.map(Math.abs);
+  },
+  real: (x: any[]) => {
+    if (typeof x[0] === 'object' && 'real' in x[0]) {
+      return x.map(val => val.real);
+    }
+    return x.map(val => val);
+  },
+  imag: (x: any[]) => {
+    if (typeof x[0] === 'object' && 'imag' in x[0]) {
+      return x.map(val => val.imag);
+    }
+    return x.map(() => 0);
+  },
+  conj: (x: any[]) => {
+    if (typeof x[0] === 'object' && 'real' in x[0]) {
+      return x.map(val => ({ real: val.real, imag: -val.imag }));
+    }
+    return x;
   },
   randn: (size: number) => Array(size).fill(0).map(() => Math.random() * 2 - 1),
 };

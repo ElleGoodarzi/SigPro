@@ -1,7 +1,6 @@
 {
-  "/api/execute/route": "app/api/execute/route.js",
-  "/labs/matlab-functions-sampling/page": "app/labs/matlab-functions-sampling/page.js",
+  "/tools/fourier-transform/page": "app/tools/fourier-transform/page.js",
+  "/labs/fourier/hermitian-symmetry/page": "app/labs/fourier/hermitian-symmetry/page.js",
   "/page": "app/page.js",
-  "/labs/page": "app/labs/page.js",
-  "/simulator/page": "app/simulator/page.js"
+  "/tools/page": "app/tools/page.js"
 }

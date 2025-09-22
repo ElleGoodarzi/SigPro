@@ -1064,9 +1064,11 @@ pre {
 }
 
 /* Focus outline for better accessibility */
-.z-transform-tool button:focus, 
+.z-transform-tool button:focus,
 .z-transform-tool select:focus,
 .z-transform-tool input:focus {
   outline: 2px solid rgba(0, 200, 255, 0.5);
   outline-offset: 2px;
-} 
+}
+
+/* Enhanced Fourier Transform Visualizer Styles */

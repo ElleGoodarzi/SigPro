@@ -71,21 +71,48 @@ export default function ToolsPage() {
             </div>
           </Link>
 
-          {/* Placeholder for future tools */}
-          <div className="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden shadow-lg opacity-50">
-            <div className="h-48 bg-gradient-to-br from-gray-700 to-gray-800 p-6 flex items-center justify-center">
-              <span className="text-6xl font-['Orbitron'] font-bold text-gray-600">F</span>
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-500 mb-2">Fourier Transform Tool</h3>
-              <p className="text-gray-500 mb-4">
-                Coming soon: Explore frequency domain analysis with interactive visualizations
-              </p>
-              <div className="flex items-center text-gray-500 font-medium">
-                <span>Coming Soon</span>
+
+          {/* Filter Design Tool */}
+          <Link href="/tools/filter-design" className="block group">
+            <div className="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden shadow-lg transition-transform transform-gpu group-hover:scale-105">
+              <div className="h-48 bg-gradient-to-br from-green-600 to-blue-700 p-6 flex items-center justify-center">
+                <span className="text-6xl font-['Orbitron'] font-bold text-white">F</span>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-cyan-400 mb-2">Filter Design Tool</h3>
+                <p className="text-gray-400 mb-4">
+                  Design and analyze digital filters with interactive pole-zero plots and frequency response
+                </p>
+                <div className="flex items-center text-cyan-500 font-medium">
+                  <span>Explore Tool</span>
+                  <svg className="w-5 h-5 ml-1 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
+
+          {/* Fourier Transform Tool */}
+          <Link href="/tools/fourier-transform" className="block group">
+            <div className="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden shadow-lg transition-transform transform-gpu group-hover:scale-105">
+              <div className="h-48 bg-gradient-to-br from-purple-600 to-cyan-700 p-6 flex items-center justify-center">
+                <span className="text-6xl font-['Orbitron'] font-bold text-white">ℱ</span>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-cyan-400 mb-2">Fourier Transform Tool</h3>
+                <p className="text-gray-400 mb-4">
+                  Complete Fourier analysis: Explorer, Coefficient Lab, and Pairing & Trig View
+                </p>
+                <div className="flex items-center text-cyan-500 font-medium">
+                  <span>Explore Tool</span>
+                  <svg className="w-5 h-5 ml-1 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </Link>
 
           {/* Placeholder for future tools */}
           <div className="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden shadow-lg opacity-50">

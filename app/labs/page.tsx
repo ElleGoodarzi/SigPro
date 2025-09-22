@@ -12,6 +12,13 @@ const labs = [
     description: 'Learn about MATLAB functions and the Nyquist-Shannon sampling theorem.',
     image: '/images/lab-matlab.png', 
     difficulty: 'Intermediate'
+  },
+  {
+    id: 'fourier/hermitian-symmetry',
+    title: 'Hermitian Symmetry in Fourier Analysis',
+    description: 'Interactive demonstration of why real signals have symmetric spectra: x₋ₙ = xₙ*',
+    image: '/images/lab-hermitian.png', 
+    difficulty: 'Intermediate'
   }
   // Z-transform lab removed to avoid redundancy with the main Z-transform tool
 ];

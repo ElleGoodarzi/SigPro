@@ -8,7 +8,13 @@
   "app/components/PlotlyChart.tsx -> react-plotly.js": {
     "id": "app/components/PlotlyChart.tsx -> react-plotly.js",
     "files": [
-      "static/chunks/_app-pages-browser_node_modules_react-plotly_js_react-plotly_js.js"
+      "static/chunks/plotly.js"
+    ]
+  },
+  "app/components/ZTransformSciFiVisualizer.tsx -> react-plotly.js": {
+    "id": "app/components/ZTransformSciFiVisualizer.tsx -> react-plotly.js",
+    "files": [
+      "static/chunks/plotly.js"
     ]
   }
 }

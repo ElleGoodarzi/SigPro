@@ -1,9 +1,9 @@
 {
   "pages": {
-    "/page": [
+    "/tools/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/app/tools/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -11,20 +11,47 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/simulator/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/simulator/page.js"
-    ],
     "/labs/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/labs/page.js"
     ],
+    "/tools/filter-design/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/tools/filter-design/page.js"
+    ],
+    "/tools/z-transform/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/tools/z-transform/page.css",
+      "static/chunks/app/tools/z-transform/page.js"
+    ],
+    "/labs/fourier/hermitian-symmetry/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/labs/fourier/hermitian-symmetry/page.js"
+    ],
     "/labs/matlab-functions-sampling/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/labs/matlab-functions-sampling/page.js"
+    ],
+    "/simulator/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/simulator/page.js"
+    ],
+    "/tools/fourier-transform/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/tools/fourier-transform/page.js"
+    ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
     ]
   }
 }
